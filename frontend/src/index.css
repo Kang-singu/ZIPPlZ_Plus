@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  @apply text-zp-black font-nanum text-balance break-all min-h-full max-w-[600px] m-auto;
+}
+
+@layer components {
+  .image-card {
+    @apply w-[170px] h-[220px] rounded-zp-radius-big bg-zp-slight-white pb-2.5 justify-between flex flex-col drop-shadow-zp-normal overflow-hidden;
+  }
+  .profile-card {
+    @apply w-[170px] h-[134px] rounded-zp-radius-big bg-zp-transparent py-3.5 items-center flex flex-col bg-zp-white drop-shadow-zp-normal;
+  }
+  .profile-img {
+    @apply rounded-zp-radius-full min-w-8 max-w-16 max-h-16 w-full aspect-square drop-shadow-zp-deep;
+  }
+  .btn {
+    @apply flex items-center justify-center w-12 border-zp-main-color aspect-square rounded-zp-radius-full bg-zp-white outline-none;
+  }
+}
+
+@keyframes zoom-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-zoom-in {
+  animation: zoom-in 0.5s ease-out forwards;
+}
