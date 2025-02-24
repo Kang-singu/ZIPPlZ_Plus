@@ -6,7 +6,7 @@ pipeline {
     }
     
     environment {
-        ZIPPlZ_FRONTEND_IMAGE = 'ZIPPlZ-frontend'
+        ZIPPlZ_FRONTEND_IMAGE = 'zipplz-frontend'
     }
     
     stages {
