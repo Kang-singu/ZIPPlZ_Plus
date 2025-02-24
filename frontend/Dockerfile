@@ -14,8 +14,8 @@ RUN npm ci
 # 소스코드 복사
 COPY . /app
 
-# 소스 코드 빌드
-RUN npm run build
+# 소스 코드 빌드 (메모리 한도 설정 추가)
+RUN NODE_OPTIONS=--max-old-space-size=4096 npm run build
 
 # 프로덕션 스테이지
 FROM nginx:1.21.4-alpine
