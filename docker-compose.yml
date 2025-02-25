@@ -1,0 +1,12 @@
+services:
+  zipplz-frontend:
+    user: root
+    container_name: zipplz-frontend
+    build: ./frontend
+    image: zipplz-frontend
+    restart: on-failure
+    ports:
+      - "80:80"
+
+    environment:
+      TZ: Asia/Seoul

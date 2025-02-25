@@ -23,10 +23,33 @@ pipeline {
                 script {
                     echo '********** Frontend Build Start **********'
                     dir('frontend') {
-                        sh 'docker build -t $ZIPPlZ_FRONTEND_IMAGE .'
+                        sh 'docker build -t ZIPPlZ/$ZIPPlZ_FRONTEND_IMAGE .'
                     }
                     
                     echo '********** Frontend Build End **********'
+                }
+            }
+        }
+
+        stage('Docker Compose Up') {
+            steps {
+                script {
+                    echo '********** Docker Compose Start **********'
+
+                    sh 'docker compose down'
+                    sh 'docker compose up -d'
+
+                    echo '********** Docker Compose End **********'
+                }
+            }
+        }
+
+        stage('Delete unnecessary Docker images') {
+            steps {
+                script {
+                    echo '********** Delete unnecessary Docker images Start **********'
+                    sh 'docker image prune -a -f'
+                    echo '********** Delete unnecessary Docker images End **********'
                 }
             }
         }
