@@ -23,7 +23,7 @@ pipeline {
                 script {
                     echo '********** Frontend Build Start **********'
                     dir('frontend') {
-                        sh 'docker build -t ZIPPlZ/$ZIPPlZ_FRONTEND_IMAGE .'
+                        sh 'docker build -t zipplz/$ZIPPlZ_FRONTEND_IMAGE .'
                     }
                     
                     echo '********** Frontend Build End **********'
