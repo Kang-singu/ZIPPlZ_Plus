@@ -3,10 +3,14 @@ services:
     user: root
     container_name: zipplz-frontend
     build: ./frontend
-    image: zipplz-frontend
+    image: zipplz/zipplz-frontend
     restart: on-failure
     ports:
       - "80:80"
+      - "443:443"
+    volumes:
+      - /etc/letsencrypt/live/www.zipplz.xyz:/etc/letsencrypt/live/www.zipplz.xyz
+      - /etc/letsencrypt/archive/www.zipplz.xyz:/etc/letsencrypt/archive/www.zipplz.xyz
 
     environment:
       TZ: Asia/Seoul
