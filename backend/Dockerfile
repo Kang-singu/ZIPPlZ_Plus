@@ -19,6 +19,5 @@ WORKDIR /app
 
 COPY --from=build /app/build/libs/*.jar /app/ZIPPlZ_Plus.jar
 
-EXPOSE 8081
-ENTRYPOINT [ "java" ]
-CMD [ "-jar", "ZIPPlZ_Plus.jar" ]
+EXPOSE 5000
+ENTRYPOINT ["java", "-jar", "/app/ZIPPlZ_Plus.jar"]
