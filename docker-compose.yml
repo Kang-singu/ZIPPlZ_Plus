@@ -1,0 +1,29 @@
+services:
+  # 원래는 ZIPPlZ-Plus-mysql 단락을 구성해야 하지만 이번에는 H2를 사용하므로 패스
+
+  zipplz-backend:
+    container_name: zipplz-backend
+    image: zipplz/zipplz-backend
+    environment:
+      - SPRING_H2_CONSOLE_ENABLED=true
+      - SPRING_DATASOURCE_URL=jdbc:h2:file:/app/data/zipplz;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
+      - SPRING_H2_CONSOLE_PATH=${spring_h2_console_path}
+      - SPRING_DATASOURCE_USERNAME=${spring_datasource_username}
+      - SPRING_DATASOURCE_PASSWORD=${spring_datasource_password}
+      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.h2.Driver
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.H2Dialect
+      - TZ=Asia/Seoul
+    volumes:
+      - h2-data:/app/data
+    networks:
+      - spring-cloud-network
+
+volumes:
+  h2-data:
+    driver: local
+
+networks:
+  spring-cloud-network:
+    external: true
+    name: zipplz-network
+    driver: bridge
