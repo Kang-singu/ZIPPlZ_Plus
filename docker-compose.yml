@@ -13,3 +13,11 @@ services:
       - /etc/letsencrypt/archive/www.zipplz.xyz:/etc/letsencrypt/archive/www.zipplz.xyz
     environment:
       TZ: Asia/Seoul
+    networks:
+      - spring-cloud-network
+
+networks:
+  spring-cloud-network:
+    external: true
+    name: zipplz-network
+    driver: bridge
