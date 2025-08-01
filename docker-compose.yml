@@ -8,6 +8,8 @@ services:
       - "5000:5000"
     environment:
       - SPRING_H2_CONSOLE_ENABLED=true
+      - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
+      - SPRING_H2_CONSOLE_S
       - SPRING_DATASOURCE_URL=jdbc:h2:file:/app/data/zipplz;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
       - SPRING_H2_CONSOLE_PATH=${spring_h2_console_path}
       - SPRING_DATASOURCE_USERNAME=${spring_datasource_username}
