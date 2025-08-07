@@ -10,7 +10,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
-@EnableMongoRepositories(basePackages = "com.example.zipplz_be.Mongodb.repository")
 @EnableJpaRepositories(basePackages = {	// MongoDB 리포지토리 패키지를 제외한 모든 리포지토리 패키지
 		"com.example.zipplz_be.Board.repository",
 		"com.example.zipplz_be.Chatting.repository",
@@ -23,10 +22,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 		"com.example.zipplz_be.Redis.repository",
 		"com.example.zipplz_be.Schedule.repository",
 		"com.example.zipplz_be.User.repository"
-},
-		excludeFilters = @ComponentScan.Filter(type = FilterType.REGEX, pattern = "com\\.example\\.zipplz_be\\.Mongodb\\.repository\\..*")
-)
-@EntityScan(basePackages = "com.example.zipplz_be")
+})
+@EnableMongoRepositories(basePackages = "com.example.zipplz_be.Mongodb.repository")
 @EnableJpaAuditing
 @EnableMongoAuditing
 @SpringBootApplication
