@@ -9,14 +9,14 @@ var vite_config_default = defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://zipplz.site/api/',
+        target: 'https://zipplz.xyz/api/',
         changeOrigin: true,
         rewrite: function (path) {
           return path.replace(/^\/api/, '');
         },
       },
       '/ws': {
-        target: 'https://zipplz.site/api/',
+        target: 'https://zipplz.xyz/api/',
         changeOrigin: true,
         ws: true,
       },

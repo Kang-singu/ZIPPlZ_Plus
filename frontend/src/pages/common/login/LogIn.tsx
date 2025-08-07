@@ -11,9 +11,9 @@ import { useLoginUserStore } from '@stores/loginUserStore';
 export default function Login() {
   const { setIsLogin, setLoginUser } = useLoginUserStore();
   const GOOGLE_LOGIN_URL: string =
-    'https://zipplz.site/api/oauth2/authorization/google';
+    'https://zipplz.xyz/api/oauth2/authorization/google';
   const KAKAO_LOGIN_URL: string =
-    'https://zipplz.site/api/oauth2/authorization/kakao';
+    'https://zipplz.xyz/api/oauth2/authorization/kakao';
   const navigate = useNavigate();
   const [isNoUser, setIsNoUser] = useState<boolean>(false);
   const [email, setEmail] = useState<string>('');

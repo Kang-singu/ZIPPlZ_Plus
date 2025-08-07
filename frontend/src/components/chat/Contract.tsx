@@ -27,7 +27,7 @@ interface Field {
   editable: boolean;
 }
 
-const base_url = 'https://zipplz.site/api/';
+const base_url = 'https://zipplz.xyz/api/';
 
 export default function Contract({ closeContractModal, name }: ContractProps) {
   const contractInfo: Field[] = [

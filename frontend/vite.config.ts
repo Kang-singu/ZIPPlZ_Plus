@@ -8,14 +8,14 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://zipplz.site',
+        target: 'https://zipplz.xyz',
         changeOrigin: true,
         rewrite: function (path) {
           return path.replace(/^\/api/, '');
         },
       },
       '/ws': {
-        target: 'https://zipplz.site',
+        target: 'https://zipplz.xyz',
         changeOrigin: true,
         ws: true,
       },

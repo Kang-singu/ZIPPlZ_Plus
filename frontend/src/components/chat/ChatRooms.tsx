@@ -15,7 +15,7 @@ import { formatTime } from '@utils/formatDateWithTime';
 import axios from 'axios';
 
 // const base_url = import.meta.env.VITE_APP_BASE_URL;
-const base_url = "https://zipplz.site/api";
+const base_url = "https://zipplz.xyz/api";
 
 export default function ChatRooms() {
   const navigate = useNavigate();
@@ -182,7 +182,7 @@ export default function ChatRooms() {
                     src={
                       room.file
                         ? // ? `http://localhost:5000/${room.file.saveFolder}/${room.file.saveFile}`
-                          `https://zipplz.site/api/${room.file.saveFolder}/${room.file.saveFile}`
+                          `https://zipplz.xyz/api/${room.file.saveFolder}/${room.file.saveFile}`
                         : 'https://i.pravatar.cc/50?img=1'
                     }
                     alt="프로필 이미지"

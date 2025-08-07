@@ -15,7 +15,7 @@ export default function WatchImage() {
   >([]);
   const getMyImages = async () => {
     return await axios.get(
-      'https://zipplz.site/api/materials/converted-images',
+      'https://zipplz.xyz/api/materials/converted-images',
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,

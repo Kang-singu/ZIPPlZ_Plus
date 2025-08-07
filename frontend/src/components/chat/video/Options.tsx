@@ -33,7 +33,7 @@ interface OptionsProps {
   startScreenShare: () => void;
 }
 
-const base_url = 'https://zipplz.site/api/';
+const base_url = 'https://zipplz.xyz/api/';
 
 export default function Options({
   leaveSession,

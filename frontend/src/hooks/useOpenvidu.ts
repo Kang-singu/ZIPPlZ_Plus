@@ -10,7 +10,7 @@ import {
   Subscriber,
 } from 'openvidu-browser';
 
-const base_url = 'https://zipplz.site/api/';
+const base_url = 'https://zipplz.xyz/api/';
 
 export default function useOpenVidu() {
   const { chatroomSerial } = useParams<{ chatroomSerial?: string }>();

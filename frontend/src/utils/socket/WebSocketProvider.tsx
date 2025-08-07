@@ -5,8 +5,8 @@ import type { ChatMessageData } from '@/types';
 import { Client, IMessage } from '@stomp/stompjs';
 import axios from 'axios';
 
-const chat_base_url = 'wss://zipplz.site/api/ws';
-const base_url: string = 'https://zipplz.site/api/';
+const chat_base_url = 'wss://zipplz.xyz/api/ws';
+const base_url: string = 'https://zipplz.xyz/api/';
 
 interface WebSocketContextType {
   sendMessage: (

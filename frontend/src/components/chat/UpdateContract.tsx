@@ -32,7 +32,7 @@ interface Field {
 
 // const base_url = import.meta.env.VITE_APP_BASE_URL;
 // const base_url = 'http://localhost:5000';
-const base_url = 'https://zipplz.site/api';
+const base_url = 'https://zipplz.xyz/api';
 
 export default function UpdateContract({
   closeContractModal,
