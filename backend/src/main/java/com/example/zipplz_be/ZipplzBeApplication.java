@@ -25,7 +25,6 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 		"com.example.zipplz_be.User.repository"
 })
 @EnableMongoRepositories(basePackages = "com.example.zipplz_be.Mongodb.repository")
-@EnableRedisRepositories(basePackages = "com.example.zipplz_be.Redis.repository")
 @EnableJpaAuditing
 @EnableMongoAuditing
 @SpringBootApplication
