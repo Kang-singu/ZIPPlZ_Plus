@@ -9,13 +9,27 @@ services:
     environment:
       - SPRING_H2_CONSOLE_ENABLED=true
       - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
-      - SPRING_H2_CONSOLE_S
       - SPRING_DATASOURCE_URL=jdbc:h2:file:/app/data/zipplz;DB_CLOSE_ON_EXIT=FALSE;AUTO_RECONNECT=TRUE
       - SPRING_H2_CONSOLE_PATH=${spring_h2_console_path}
       - SPRING_DATASOURCE_USERNAME=${spring_datasource_username}
       - SPRING_DATASOURCE_PASSWORD=${spring_datasource_password}
       - SPRING_DATASOURCE_DRIVER_CLASS_NAME=org.h2.Driver
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.H2Dialect
+
+      - OPENVIDU_URL=${OPENVIDU_URL}
+      - OPENVIDU_SECRET=${OPENVIDU_SECRET}
+      - spring_jwt_secret=${spring.jwt.secret}
+      - spring_security_oauth2_client_registration_google_client_id=${spring.security.oauth2.client.registration.google.client-id}
+      - spring_security_oauth2_client_registration_google_client_secret=${spring.security.oauth2.client.registration.google.client-secret}
+      - spring_security_oauth2_client_registration_google_redirect_uri=${spring.security.oauth2.client.registration.google.redirect-uri}
+      - spring_security_oauth2_client_registration_kakao_client_id=${spring.security.oauth2.client.registration.kakao.client-id}
+      - spring_security_oauth2_client_registration_kakao_client_secret=${spring.security.oauth2.client.registration.kakao.client-secret}
+      - spring_security_oauth2_client_registration_kakao_redirect_uri=${spring.security.oauth2.client.registration.kakao.redirect-uri}
+      - spring_data_mongodb_uri=${spring.data.mongodb.uri}
+      - cloud_aws_credentials_accessKey=${cloud.aws.credentials.accessKey}
+      - cloud_aws_credentials_secretKey=${cloud.aws.credentials.secretKey}
+      - openai_api_key=${openai.api.key}
+
       - TZ=Asia/Seoul
     volumes:
       - h2-data:/app/data
