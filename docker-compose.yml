@@ -30,11 +30,20 @@ services:
       - cloud_aws_credentials_secretKey=${cloud_aws_credentials_secretKey}
       - openai_api_key=${openai_api_key}
 
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
+
       - TZ=Asia/Seoul
+
     volumes:
       - h2-data:/app/data
     networks:
       - spring-cloud-network
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
 
 volumes:
   h2-data:
