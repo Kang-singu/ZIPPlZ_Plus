@@ -24,6 +24,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 		"com.example.zipplz_be.User.repository"
 })
 @EnableMongoRepositories(basePackages = "com.example.zipplz_be.Mongodb.repository")
+@EnableRedisRepositories(basePackages = "com.example.zipplz_be.redis.repository")
 @EnableJpaAuditing
 @EnableMongoAuditing
 @SpringBootApplication
