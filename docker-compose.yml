@@ -18,17 +18,17 @@ services:
 
       - OPENVIDU_URL=${OPENVIDU_URL}
       - OPENVIDU_SECRET=${OPENVIDU_SECRET}
-      - spring_jwt_secret=${spring.jwt.secret}
-      - spring_security_oauth2_client_registration_google_client_id=${spring.security.oauth2.client.registration.google.client-id}
-      - spring_security_oauth2_client_registration_google_client_secret=${spring.security.oauth2.client.registration.google.client-secret}
-      - spring_security_oauth2_client_registration_google_redirect_uri=${spring.security.oauth2.client.registration.google.redirect-uri}
-      - spring_security_oauth2_client_registration_kakao_client_id=${spring.security.oauth2.client.registration.kakao.client-id}
-      - spring_security_oauth2_client_registration_kakao_client_secret=${spring.security.oauth2.client.registration.kakao.client-secret}
-      - spring_security_oauth2_client_registration_kakao_redirect_uri=${spring.security.oauth2.client.registration.kakao.redirect-uri}
-      - spring_data_mongodb_uri=${spring.data.mongodb.uri}
-      - cloud_aws_credentials_accessKey=${cloud.aws.credentials.accessKey}
-      - cloud_aws_credentials_secretKey=${cloud.aws.credentials.secretKey}
-      - openai_api_key=${openai.api.key}
+      - spring_jwt_secret=${spring_jwt_secret}
+      - spring_security_oauth2_client_registration_google_client_id=${spring_security_oauth2_client_registration_google_client_id}
+      - spring_security_oauth2_client_registration_google_client_secret=${spring_security_oauth2_client_registration_google_client_secret}
+      - spring_security_oauth2_client_registration_google_redirect_uri=${spring_security_oauth2_client_registration_google_redirect_uri}
+      - spring_security_oauth2_client_registration_kakao_client_id=${spring_security_oauth2_client_registration_kakao_client_id}
+      - spring_security_oauth2_client_registration_kakao_client_secret=${spring_security_oauth2_client_registration_kakao_client_secret}
+      - spring_security_oauth2_client_registration_kakao_redirect_uri=${spring_security_oauth2_client_registration_kakao_redirect_uri}
+      - spring_data_mongodb_uri=${spring_data_mongodb_uri}
+      - cloud_aws_credentials_accessKey=${cloud_aws_credentials_accessKey}
+      - cloud_aws_credentials_secretKey=${cloud_aws_credentials_secretKey}
+      - openai_api_key=${openai_api_key}
 
       - TZ=Asia/Seoul
     volumes:
