@@ -32,6 +32,8 @@ services:
       - cloud_aws_credentials_secretKey=${cloud_aws_credentials_secretKey}
       - openai_api_key=${openai_api_key}
 
+      - SPRING_REDIS_HOST=redis
+      - SPRING_REDIS_PORT=6379
       - TZ=Asia/Seoul
 
     volumes:
