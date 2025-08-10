@@ -52,12 +52,10 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http, UserRepository userRepository) throws Exception {
 
         http
-                .csrf((csrf) -> csrf
-                        .ignoringRequestMatchers(PathRequest.toH2Console()))
+                .csrf(csrf -> csrf.disable())
                 .headers((headers) -> headers
                         .addHeaderWriter(new XFrameOptionsHeaderWriter(
                                 XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
-                .csrf(csrf -> csrf.disable())
                 .formLogin(formLogin -> formLogin.disable())
                 .httpBasic(httpBasic -> httpBasic.disable())
                 .sessionManagement(session -> session
