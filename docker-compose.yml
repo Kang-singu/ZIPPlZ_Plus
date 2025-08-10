@@ -6,6 +6,8 @@ services:
     build: ./backend
     ports:
       - "5000:5000"
+    depends_on:
+      - redis
     environment:
       - SPRING_H2_CONSOLE_ENABLED=true
       - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
