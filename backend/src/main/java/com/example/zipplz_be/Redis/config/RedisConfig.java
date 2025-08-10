@@ -14,6 +14,19 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 @Configuration
 public class RedisConfig {
 
+    // 아래 사항을 적어주지 않으면 localhost로 연결해서 오류 발생
+    @Value("${spring.redis.host}")
+    private String redisHost;
+
+    @Value("${spring.redis.port}")
+    private int redisPort;
+
+    @Bean
+    public LettuceConnectionFactory redisConnectionFactory() {
+        return new LettuceConnectionFactory(redisHost, redisPort);
+    }
+
+
     /*
     - 역할: Redis에서 발행된 메시지를 수신하고, 해당 메시지를 구독하는 리스너(Subscriber)에게 전달합니다.
     - 사용: 메시지가 Redis 채널에 발행될 때마다, 이 컨테이너는 메시지를 가져와 설정된 메시지 리스너에게 전달합니다.
