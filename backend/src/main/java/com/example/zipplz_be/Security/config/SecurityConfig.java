@@ -7,6 +7,7 @@ import com.example.zipplz_be.JWT.util.JWTUtil;
 import com.example.zipplz_be.OAuth2.handler.OAuth2SuccessHandler;
 import com.example.zipplz_be.User.repository.UserRepository;
 import com.example.zipplz_be.User.service.CustomOAuth2UserService;
+import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.header.writers.frameoptions.XFrameOptionsHeaderWriter;
 import org.springframework.web.cors.CorsUtils;
 
 @Configuration
@@ -50,6 +52,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http, UserRepository userRepository) throws Exception {
 
         http
+                .csrf((csrf) -> csrf
+                        .ignoringRequestMatchers(PathRequest.toH2Console()))
+                .headers((headers) -> headers
+                        .addHeaderWriter(new XFrameOptionsHeaderWriter(
+                                XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN)))
                 .csrf(csrf -> csrf.disable())
                 .formLogin(formLogin -> formLogin.disable())
                 .httpBasic(httpBasic -> httpBasic.disable())
