@@ -32,6 +32,8 @@ services:
 
       - SPRING_REDIS_HOST=redis
       - SPRING_REDIS_PORT=6379
+      - spring.redis.host=redis
+      - spring.redis.port=6379
 
       - TZ=Asia/Seoul
 
