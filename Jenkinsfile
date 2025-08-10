@@ -49,7 +49,7 @@ pipeline {
                     echo '********** Docker Compose Start **********'
 
                     sh 'docker compose down'
-                    sh 'docker compose up -d'
+                    sh 'docker compose up -d --build'
 
                     echo '********** Docker Compose End **********'
                 }

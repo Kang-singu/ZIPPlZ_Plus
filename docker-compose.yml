@@ -3,7 +3,7 @@ services:
 
   zipplz-backend:
     container_name: zipplz-backend
-    image: zipplz/zipplz-backend
+    build: ./backend
     ports:
       - "5000:5000"
     environment:
