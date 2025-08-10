@@ -49,6 +49,7 @@ pipeline {
                     echo '********** Docker Compose Start **********'
 
                     sh 'docker compose down'
+                    sh 'docker compose build --no-cache'
                     sh 'docker compose up -d --build'
 
                     echo '********** Docker Compose End **********'
