@@ -31,7 +31,7 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
             "FROM Comment " +
             "WHERE board_serial = :boardSerial and parent_comment_serial = :commentSerial ) as c " +
             "LEFT JOIN Customer cus ON cus.user_serial = c.user_serial " +
-            "LEFT JOIN User u ON u.user_serial = c.user_serial " +
+            "LEFT JOIN USERS u ON u.user_serial = c.user_serial " +
             "LEFT JOIN File f ON f.file_serial = u.file_serial", nativeQuery = true)
     List<CommentJoinDTO> getComment(@Param("boardSerial") int boardSerial, @Param("commentSerial") int commentSerial);
 

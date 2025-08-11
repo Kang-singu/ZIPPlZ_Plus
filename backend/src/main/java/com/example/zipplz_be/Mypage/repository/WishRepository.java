@@ -30,7 +30,7 @@ public interface WishRepository extends JpaRepository<Wish, Integer> {
             "FROM Wish " +
             "WHERE user_serial= :user_serial and wish_type = :type ) as w " +
             "LEFT JOIN Portfolio p on p.portfolio_serial = w.wish_serial " +
-            "LEFT JOIN User u on u.user_serial = w.user_serial " +
+            "LEFT JOIN USERS u on u.user_serial = w.user_serial " +
             "LEFT JOIN CustomerReview c on c.portfolio_serial = w.wish_serial;", nativeQuery = true)
     public List<PortfolioJoinDTO> getWorkerWishList(@Param("type") int type, @Param("user_serial") int user_serial);
 

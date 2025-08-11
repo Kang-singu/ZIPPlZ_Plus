@@ -49,7 +49,7 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
             "FROM Board " +
             "WHERE board_type = :boardType ) b " +
             "LEFT JOIN Customer cus ON cus.user_serial = b.user_serial " +
-            "LEFT JOIN User u on u.user_serial = b.user_serial " +
+            "LEFT JOIN USERS u on u.user_serial = b.user_serial " +
             "LEFT JOIN File f on f.file_serial = u.file_serial", nativeQuery = true)
     List<BoardJoinDTO> getBoards(@Param("boardType") int boardType);
 
@@ -58,7 +58,7 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
             "FROM Board " +
             "WHERE board_serial = :boardSerial ) b " +
             "LEFT JOIN Customer cus ON cus.user_serial = b.user_serial " +
-            "LEFT JOIN User u on u.user_serial = b.user_serial " +
+            "LEFT JOIN USERS u on u.user_serial = b.user_serial " +
             "LEFT JOIN File f on f.file_serial = u.file_serial", nativeQuery = true)
     BoardJoinDTO getBoard(@Param("boardSerial") int boardSerial);
 
@@ -67,7 +67,7 @@ public interface BoardRepository extends JpaRepository<Board, Integer> {
             "FROM Board " +
             "WHERE board_type = :boardType and ( title LIKE CONCAT('%', :searchContent, '%')  or board_content LIKE CONCAT('%', :searchContent, '%') ) ) b " +
             "LEFT JOIN Customer cus ON cus.user_serial = b.user_serial " +
-            "LEFT JOIN User u on u.user_serial = b.user_serial " +
+            "LEFT JOIN USERS u on u.user_serial = b.user_serial " +
             "LEFT JOIN File f on f.file_serial = u.file_serial", nativeQuery = true)
     List<BoardJoinDTO> findBoardsByContent(@Param("boardType") int boardType, @Param("searchContent") String searchContent);
 

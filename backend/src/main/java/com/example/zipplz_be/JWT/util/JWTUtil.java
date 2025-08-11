@@ -4,6 +4,7 @@ import com.example.zipplz_be.User.repository.UserRepository;
 import com.example.zipplz_be.User.service.CustomUserDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,11 +21,12 @@ public class JWTUtil {
 
     private final CustomUserDetailsService customUserDetailsService;
     private final UserRepository userRepository;
-    private SecretKey secretKey;
+    private final SecretKey secretKey;
     private static final Long expiredMs = 600000000L;
 
     public JWTUtil(@Value("${spring.jwt.secret}") String secret, CustomUserDetailsService customUserDetailsService, UserRepository userRepository) {
-        secretKey = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS256.key().build().getAlgorithm());
+//        secretKey = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS256.key().build().getAlgorithm());
+        this.secretKey = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
         this.customUserDetailsService = customUserDetailsService;
         this.userRepository = userRepository;
     }
