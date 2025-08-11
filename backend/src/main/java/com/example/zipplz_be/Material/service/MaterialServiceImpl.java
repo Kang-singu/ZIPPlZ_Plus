@@ -131,8 +131,8 @@ public class MaterialServiceImpl implements MaterialService {
         File file = fileRepository.findBySaveFile(url);
 
         UserFileRelation userFileRelation = UserFileRelation.builder()
-                .user(user)
-                .file(file)
+                .userSerial(user)
+                .fileSerial(file)
                 .build();
         System.out.println(file.toString());
 
