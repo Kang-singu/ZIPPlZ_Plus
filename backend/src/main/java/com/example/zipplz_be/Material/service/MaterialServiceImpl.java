@@ -151,7 +151,7 @@ public class MaterialServiceImpl implements MaterialService {
         }
 
         return userFileRelationRepository.findAllByUser(user).stream()
-                .map(UserFileRelation::getFile)
+                .map(UserFileRelation::getFileSerial)
                 .collect(Collectors.toList());
     }
 
