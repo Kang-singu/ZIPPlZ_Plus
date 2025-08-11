@@ -8,22 +8,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@IdClass(UserFileRelation.class)
+@IdClass(UserFileRelationId.class)
 @Getter
 @NoArgsConstructor
 public class UserFileRelation {
     @Id
     @ManyToOne
-    @JoinColumn(name = "user")
-    private User user;
+    @JoinColumn(name = "user_serial")
+    private User userSerial;
     @Id
     @ManyToOne
-    @JoinColumn(name = "file")
-    private File file;
+    @JoinColumn(name = "file_serial")
+    private File fileSerial;
 
     @Builder
-    public UserFileRelation(User user, File file) {
-        this.user = user;
-        this.file = file;
+    public UserFileRelation(User userSerial, File fileSerial) {
+        this.userSerial = userSerial;
+        this.fileSerial = fileSerial;
     }
 }
