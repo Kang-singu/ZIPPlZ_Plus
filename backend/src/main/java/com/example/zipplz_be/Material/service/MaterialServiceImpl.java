@@ -146,11 +146,11 @@ public class MaterialServiceImpl implements MaterialService {
             throw new UserNotFoundException("존재하지 않는 유저입니다.");
         }
         User user = userRepository.findByUserSerial(userSerial);
-        if (!userFileRelationRepository.existsByUser(user)) {
+        if (!userFileRelationRepository.existsByUserSerial(user)) {
             return null;
         }
 
-        return userFileRelationRepository.findAllByUser(user).stream()
+        return userFileRelationRepository.findAllByUserSerial(user).stream()
                 .map(UserFileRelation::getFileSerial)
                 .collect(Collectors.toList());
     }

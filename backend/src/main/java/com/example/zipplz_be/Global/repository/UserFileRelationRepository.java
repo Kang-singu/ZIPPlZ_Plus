@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface UserFileRelationRepository extends JpaRepository<UserFileRelation, UserFileRelationId> {
 
-    List<UserFileRelation> findAllByUser(User user);
+    List<UserFileRelation> findAllByUserSerial(User user);
 
-    boolean existsByUser(User user);
+    boolean existsByUserSerial(User user);
 }
