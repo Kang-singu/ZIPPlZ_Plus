@@ -17,7 +17,7 @@ public class PortfolioUserDTO {
     private Integer fileSerial;     //파일 연번
 
     @Builder
-    public PortfolioUserDTO(int userSerial, String userName, String tel, String email, Date birthDate, int fileSerial) {
+    public PortfolioUserDTO(int userSerial, String userName, String tel, String email, Date birthDate, Integer fileSerial) {
         this.userSerial = userSerial;
         this.userName = userName;
         this.tel = tel;
