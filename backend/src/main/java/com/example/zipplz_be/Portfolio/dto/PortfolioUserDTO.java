@@ -14,7 +14,7 @@ public class PortfolioUserDTO {
     private String tel;         // 전화번호
     private String email;       // 이메일
     private Date birthDate;     // 나이
-    private int fileSerial;     //파일 연번
+    private Integer fileSerial;     //파일 연번
 
     @Builder
     public PortfolioUserDTO(int userSerial, String userName, String tel, String email, Date birthDate, int fileSerial) {
