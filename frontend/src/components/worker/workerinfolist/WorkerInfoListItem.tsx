@@ -9,6 +9,8 @@ interface Props {
 }
 export default function WorkerInfoListItem({ worker }: Props) {
   const navigate = useNavigate();
+
+  const defaultImage = '/defaultProfile.png';
   return (
     <div
       className="flex flex-col w-['30%'] bg-zp-white rounded-zp-radius-big cursor-pointer h-[10rem] drop-shadow-zp-slight justify-center"
@@ -19,7 +21,7 @@ export default function WorkerInfoListItem({ worker }: Props) {
       {worker.img ? (
         <img
           className="w-full h-[35%] basis-3/5 object-cover transform scale-125 origin-top"
-          src={worker.save_file}
+          src={worker?.save_file || defaultImage}
         />
       ) : (
         <div className="flex items-center basis-3/5 justify-center w-full h-[50%] overflow-hidden">

@@ -1,6 +1,7 @@
 import Skeleton from 'react-loading-skeleton';
 import { useNavigate } from 'react-router-dom';
 
+
 interface Props {
   worker: any;
 }
@@ -14,6 +15,8 @@ export default function WorkerCard({ worker }: Props) {
   //     : '위치 정보 없음';
   // const fieldName = worker.field_name || '분야 정보 없음';
   // const temperature = worker.temperature || '온도 정보 없음';
+
+  const defaultImage = '/worker-default-icon.png';
 
   return (
     <div className="relative flex flex-col justify-end flex-shrink-0 h-full px-5 cursor-pointer sm:w-1/3 md:w-1/3">
@@ -29,7 +32,7 @@ export default function WorkerCard({ worker }: Props) {
             {/* {worker.save_file ? ( */}
             <img
               className="object-cover w-full h-full rounded-zp-radius-full"
-              src={worker.save_file}
+              src={worker?.save_file || defaultImage}
             />
             {/* ) : ( */}
             {/* <Skeleton circle={true} height={60} width={60} /> */}
