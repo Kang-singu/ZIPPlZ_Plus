@@ -156,7 +156,10 @@ public class PortfolioService {
 
         User user = worker.getUserSerial();
         List<PortfolioFileDTO> imageList = fileRepository.getImg(portfolioSerial);
-        File userProfile = fileRepository.findByFileSerial(user.getFileSerial().getFileSerial());
+        File userProfile = null;
+        if (user.getFileSerial() != null) {
+            userProfile = fileRepository.findByFileSerial(user.getFileSerial().getFileSerial());
+        }
         List<String> localList = localRepository.getLocalNames(user.getUserSerial());
         PortfolioUserDTO portfolioUserDTO = PortfolioUserDTO.builder()
                 .userSerial(user.getUserSerial())
@@ -164,7 +167,7 @@ public class PortfolioService {
                 .userName(user.getUserName())
                 .tel(user.getTel())
                 .email(user.getEmail())
-                .fileSerial(userProfile.getFileSerial()).build();
+                .fileSerial(userProfile != null ? userProfile.getFileSerial() : null).build();
 
 
         //포트폴리오 번호로 포트폴리오에서 필요한 정보들 찾고 DTO 리턴
