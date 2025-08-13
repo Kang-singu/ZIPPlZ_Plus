@@ -108,6 +108,8 @@ export default function Portfolio() {
     if (id) navigate(`/workers/${parseInt(id)}/portfolio?tab=review`);
   };
 
+  const defaultImage = '/worker-default-icon.png';
+
   return (
     <>
       <div className="flex flex-col w-full gap-2 min-h-screen p-6 mt-[3rem] mb-10">
@@ -116,7 +118,7 @@ export default function Portfolio() {
             <div className="w-[100px] h-[100px] rounded-zp-radius-full drop-shadow-zp-deep ">
               <img
                 className="object-cover w-full h-full rounded-zp-radius-full"
-                src={portfolioOverview?.userProfile.saveFile}
+                src={portfolioOverview?.userProfile?.saveFile || defaultImage}
               />
             </div>
             <p className="font-bold text-zp-lg">
