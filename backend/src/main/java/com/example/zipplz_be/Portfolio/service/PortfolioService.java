@@ -169,6 +169,7 @@ public class PortfolioService {
                 .email(user.getEmail())
                 .fileSerial(userProfile != null ? userProfile.getFileSerial() : null).build();
 
+        File safeProfile = userProfile != null ? userProfile : new File();
 
         //포트폴리오 번호로 포트폴리오에서 필요한 정보들 찾고 DTO 리턴
         PortfolioInfoDTO portfolioInfoDTO = PortfolioInfoDTO.builder()
@@ -179,7 +180,7 @@ public class PortfolioService {
                 .publicRelation(portfolio.getPublicRelation())
                 .user(portfolioUserDTO)
                 .worker(portfolioWorkerDTO)
-                .userProfile(userProfile)
+                .userProfile(safeProfile)
                 .imageList(imageList)
                 .localList(localList).build();
 
