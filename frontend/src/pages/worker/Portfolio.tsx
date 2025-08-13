@@ -118,7 +118,7 @@ export default function Portfolio() {
             <div className="w-[100px] h-[100px] rounded-zp-radius-full drop-shadow-zp-deep ">
               <img
                 className="object-cover w-full h-full rounded-zp-radius-full"
-                src={portfolioOverview?.userProfile?.saveFile || defaultImage}
+                src={portfolioOverview?.userProfile?.saveFile ?? defaultImage}
               />
             </div>
             <p className="font-bold text-zp-lg">
