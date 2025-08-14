@@ -288,7 +288,7 @@ public class PlanService {
             //S3로 putObject 할 때 사용할 요청 객체
             //생성자 : bucket 이름, 파일 명, byteInputStream, metadata
             PutObjectRequest putObjectRequest =
-                    new PutObjectRequest(bucketName, s3FileName, byteArrayInputStream, metadata)
+                    new PutObjectRequest(bucketName, s3FileName, byteArrayInputStream, metadata);
 //                            .withCannedAcl(CannedAccessControlList.PublicRead);
 
             //실제로 S3에 이미지 데이터를 넣는 부분
