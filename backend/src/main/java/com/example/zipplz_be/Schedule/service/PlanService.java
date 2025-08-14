@@ -34,6 +34,7 @@ import com.example.zipplz_be.User.repository.CustomerRepository;
 import com.example.zipplz_be.User.repository.UserRepository;
 import com.example.zipplz_be.User.repository.WorkerRepository;
 import jakarta.transaction.Transactional;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -43,6 +44,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.*;
 
+@Slf4j
 @Service
 public class PlanService {
     private final AmazonS3 amazonS3;
@@ -262,7 +264,7 @@ public class PlanService {
     private String uploadToS3(MultipartFile image) throws IOException {
         String originalFilename = image.getOriginalFilename();
 
-        String extention = originalFilename.substring(originalFilename.lastIndexOf("."));
+        String extention = originalFilename.substring(originalFilename.lastIndexOf(".")+1).toLowerCase();
 
         //파일명
         String s3FileName = UUID.randomUUID().toString().substring(0, 10) + originalFilename;
@@ -279,6 +281,10 @@ public class PlanService {
         String url = "";
 
         try {
+            // 업로드 직전 로그
+            log.info("S3 업로드 시도 - 파일명: {}, 확장자: {}, 크기: {}, 버킷: {}", s3FileName, extention, bytes.length, bucketName);
+
+
             //S3로 putObject 할 때 사용할 요청 객체
             //생성자 : bucket 이름, 파일 명, byteInputStream, metadata
             PutObjectRequest putObjectRequest =
@@ -289,6 +295,7 @@ public class PlanService {
             amazonS3.putObject(putObjectRequest);
 
             url = amazonS3.getUrl(bucketName, s3FileName).toString();
+            log.info("S3 업로드 완료 - URL : {}", url);
 
             //file 객체 하나 만들어서 repository로 db에 추가
             File file = new File();
@@ -298,7 +305,8 @@ public class PlanService {
 
             fileRepository.save(file);
         } catch (Exception e){
-            throw new S3Exception("Put Object 도중에 에러 발생");
+            log.error("S3 업로드 실패", e);
+            throw new S3Exception("Put Object 도중에 에러 발생" + e.getMessage());
         }finally {
             byteArrayInputStream.close();
             is.close();
