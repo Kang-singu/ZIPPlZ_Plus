@@ -16,7 +16,7 @@ import {
 } from '@utils/socket/WebSocketProvider';
 import axios from 'axios';
 
-const base_url = 'https://zipplz.xyx/api/';
+const base_url = 'https://zipplz.xyz/api/';
 
 function ChatRoomContent() {
   const { chatroomSerial } = useParams<{ chatroomSerial?: string }>();
