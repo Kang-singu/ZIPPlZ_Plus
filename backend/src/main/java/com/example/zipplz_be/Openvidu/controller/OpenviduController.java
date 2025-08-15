@@ -66,6 +66,7 @@ public class OpenviduController {
             // } else {
                 
                 System.out.println("채팅방 유효검사 통과!!!");
+                System.out.println("params JSON = " + new com.google.gson.Gson().toJson(params));
                 SessionProperties properties = SessionProperties.fromJson(params).build();
                 System.out.println(properties.toString());
 
