@@ -111,6 +111,7 @@ export default function useOpenVidu() {
       const data = JSON.stringify({
         customSessionId: sessionId,
         mediaMode: 'ROUTED',
+        recordingMode: 'MANUAL',
         chatroomSerial: Number(chatroomSerial),
       });
       const response = await axios.post(
