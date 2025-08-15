@@ -50,7 +50,7 @@ services:
       - spring-cloud-network
 
   openvidu:
-    image: openvidu/openvidu-server-kms:2.28.0
+    image: openvidu/openvidu-server-kms:latest
     container_name: openvidu
     restart: unless-stopped
     ports:
