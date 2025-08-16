@@ -34,8 +34,8 @@ public class OpenviduController {
     }
 
 
-    @Value("${OPENVIDU_URL}")
-    private String OPENVIDU_URL;
+    @Value("${OPENVIDU_SERVER_URL}")
+    private String OPENVIDU_SERVER_URL;
 
     @Value("${OPENVIDU_SECRET}")
     private String OPENVIDU_SECRET;
@@ -44,7 +44,7 @@ public class OpenviduController {
 
     @PostConstruct
     public void init() {
-        this.openvidu = new OpenVidu(OPENVIDU_URL, OPENVIDU_SECRET);
+        this.openvidu = new OpenVidu(OPENVIDU_SERVER_URL, OPENVIDU_SECRET);
     }
 
     //세션 생성

@@ -20,6 +20,7 @@ services:
       - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.H2Dialect
 
       - OPENVIDU_URL=${OPENVIDU_URL}
+      - OPENVIDU_SERVER_URL=${OPENVIDU_SERVER_URL}
       - OPENVIDU_SECRET=${OPENVIDU_SECRET}
       - spring_jwt_secret=${spring_jwt_secret}
       - spring_security_oauth2_client_registration_google_client_id=${spring_security_oauth2_client_registration_google_client_id}
