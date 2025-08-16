@@ -4,6 +4,7 @@ pipeline {
     environment {
         ZIPPlZ_BACKEND_IMAGE = 'zipplz-backend'
         OPENVIDU_URL = credentials('OPENVIDU_URL');
+        OPENVIDU_SERVER_URL = credentials('OPENVIDU_SERVER_URL');
         OPENVIDU_SECRET = credentials('OPENVIDU_SECRET');
         DOMAIN_OR_PUBLIC_IP = credentials("DOMAIN_OR_PUBLIC_IP")
         spring_h2_console_path = credentials('spring.h2.console.path');
