@@ -66,6 +66,8 @@ public class OpenviduController {
             // } else {
                 
                 System.out.println("채팅방 유효검사 통과!!!");
+                int crSerial = (Integer) params.get("chatroomSerial");
+                params.remove("chatroomSerial");
                 System.out.println("params JSON = " + new com.google.gson.Gson().toJson(params));
                 SessionProperties properties = SessionProperties.fromJson(params).build();
                 System.out.println(properties.toString());
@@ -74,7 +76,7 @@ public class OpenviduController {
                 
                 System.out.println("세션 생성 성공!!!" + session.getSessionId());
 
-                boolean flag = openviduService.initializeSession((Integer) params.get("chatroomSerial"), session.getSessionId());
+                boolean flag = openviduService.initializeSession(crSerial, session.getSessionId());
 
                 if (!flag) {
                     status = HttpStatus.NOT_FOUND;
