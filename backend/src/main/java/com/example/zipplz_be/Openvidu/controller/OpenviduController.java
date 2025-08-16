@@ -88,6 +88,17 @@ public class OpenviduController {
             //}
 
         } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("예외 발생 상세 메시지: " + e.getMessage());
+
+            // OpenViduHttpException일 경우
+            if (e instanceof OpenViduHttpException) {
+                OpenViduHttpException ove = (OpenViduHttpException) e;
+                System.out.println("OpenVidu 서버 응답 상태코드 = " + ove.getStatus());
+                // 서버에서 보내는 JSON 메시지를 그냥 getMessage()로 확인
+                System.out.println("OpenVidu 서버 응답 메시지/바디 = " + ove.getMessage());
+            }
+
             status = HttpStatus.INTERNAL_SERVER_ERROR;
             responseDTO = new ResponseDTO<>(status.value(), e.getMessage());
         }
