@@ -15,6 +15,8 @@ services:
       TZ: Asia/Seoul
     networks:
       - spring-cloud-network
+    extra_hosts:
+      - "zipplz.xyz:172.20.0.10"
 
 networks:
   spring-cloud-network:
