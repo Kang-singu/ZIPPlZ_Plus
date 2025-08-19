@@ -9,8 +9,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /etc/letsencrypt/live/www.zipplz.xyz:/etc/letsencrypt/live/www.zipplz.xyz
-      - /etc/letsencrypt/archive/www.zipplz.xyz:/etc/letsencrypt/archive/www.zipplz.xyz
+      - /opt/openvidu/owncert/cert.pem:/opt/openvidu/owncert/certificate.cert
+      - /opt/openvidu/owncert/key.pem:/opt/openvidu/owncert/certificate.key
     environment:
       TZ: Asia/Seoul
     networks:
