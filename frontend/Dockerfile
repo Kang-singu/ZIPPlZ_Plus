@@ -8,8 +8,8 @@ WORKDIR /app
 COPY package.json .
 COPY package-lock.json .
 
-# 라이브러리 설치
-RUN npm ci
+# 라이브러리 설치 (캐시 활용, 불필요한 옵션 제거)
+RUN npm ci --prefer-offline --no-audit --progress=false
 
 # 소스코드 복사
 COPY . /app
