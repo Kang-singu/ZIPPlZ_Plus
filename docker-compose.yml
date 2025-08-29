@@ -9,6 +9,7 @@ services:
     depends_on:
       - redis
       - openvidu
+      - kurento-media-server
     environment:
       - SPRING_H2_CONSOLE_ENABLED=true
       - SPRING_H2_CONSOLE_SETTINGS_WEB_ALLOW_OTHERS=true
@@ -51,16 +52,43 @@ services:
       - spring-cloud-network
 
   openvidu:
-    image: openvidu/openvidu-server-kms:latest
+    image: openvidu/openvidu-server:2.29.0
     container_name: openvidu
     restart: unless-stopped
     ports:
       - "4443:4443"
       - "8888:8888"
+    depends_on:
+      - kurento-media-server
     environment:
       - DOMAIN_OR_PUBLIC_IP=${DOMAIN_OR_PUBLIC_IP}
       - OPENVIDU_SECRET=${OPENVIDU_SECRET}
-      - OPENVIDU_SERVER_SSL=true # SSL 비활성화, HTTP 사용
+      - OPENVIDU_URL=${OPENVIDU_URL}
+      - CERTIFICATE_TYPE=${CERTIFICATE_TYPE}
+      # - OPENVIDU_CUSTOM_CERTIFICATE=/opt/openvidu/owncert/certificate.cert
+      # - OPENVIDU_CUSTOM_PRIVATE_KEY=/opt/openvidu/owncert/certificate.key
+      - KMS_URIS=["ws://kurento-media-server:8888/kurento"]
+      - HTTPS_PORT=4443
+    volumes:
+      # - /opt/openvidu/owncert/cert.pem:/opt/openvidu/owncert/certificate.cert
+      # - /opt/openvidu/owncert/key.pem:/opt/openvidu/owncert/certificate.key
+      - /opt/openvidu/owncert/keystore.p12:/opt/openvidu/owncert/keystore.p12
+      - /opt/openvidu/.env:/opt/openvidu/.env
+    networks:
+      - spring-cloud-network
+
+  kurento-media-server:
+    image: kurento/kurento-media-server:6.18.0
+    container_name: kurento-media-server
+    restart: unless-stopped
+    environment:
+      # STUN 서버 설정 (WebRTC P2P 통신 지원) - Google의 공용 STUN 서버 사용
+      - KMS_STUN_IP=stun.l.google.com
+      - KMS_STUN_PORT=19302
+      # 미디어 트래픽을 위한 포트 범위 설정
+      # 이 포트 범위(예: 30000-30050)는 호스트 서버의 방화벽에서 반드시 열려 있어야 합니다!
+      - KMS_MIN_PORT=30000
+      - KMS_MAX_PORT=30050
     networks:
       - spring-cloud-network
 
