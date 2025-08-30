@@ -56,7 +56,7 @@ services:
     container_name: openvidu
     restart: unless-stopped
     ports:
-      - "4443:4443"
+      - "4443:443"
       - "8888:8888"
     depends_on:
       - kurento-media-server
