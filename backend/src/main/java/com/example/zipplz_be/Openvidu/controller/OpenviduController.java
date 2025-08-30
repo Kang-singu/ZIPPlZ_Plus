@@ -34,7 +34,7 @@ public class OpenviduController {
     }
 
 
-    @Value("${OPENVIDU_SERVER_URL}")
+    @Value("${OPENVIDU_URL}")
     private String OPENVIDU_SERVER_URL;
 
     @Value("${OPENVIDU_SECRET}")
