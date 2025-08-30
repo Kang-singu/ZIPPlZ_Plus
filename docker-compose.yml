@@ -68,7 +68,7 @@ services:
       # - OPENVIDU_CUSTOM_CERTIFICATE=/opt/openvidu/owncert/certificate.cert
       # - OPENVIDU_CUSTOM_PRIVATE_KEY=/opt/openvidu/owncert/certificate.key
       - KMS_URIS=["ws://kurento-media-server:8888/kurento"]
-      - HTTPS_PORT=4443
+      - HTTPS_PORT=443
     volumes:
       # - /opt/openvidu/owncert/cert.pem:/opt/openvidu/owncert/certificate.cert
       # - /opt/openvidu/owncert/key.pem:/opt/openvidu/owncert/certificate.key
