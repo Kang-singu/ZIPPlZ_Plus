@@ -214,6 +214,9 @@ public class OpenviduController {
                     ConnectionProperties properties = ConnectionProperties.fromJson(params).build();
                     Connection connection = session.createConnection(properties);
 
+                    String token = connection.getToken();
+                    System.out.println("######Generated Token : "+token);
+
                     //토큰 암호화 필요?
                     openviduService.createConnection(connection.getToken(), userSerial, (Integer) params.get("chatroomSerial"));
 
