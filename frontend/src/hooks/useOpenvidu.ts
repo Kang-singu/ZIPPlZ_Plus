@@ -174,9 +174,11 @@ export default function useOpenVidu() {
     try {
       const sessionIds = await createSession(sessionId);
       const token_a = await createToken(sessionIds);
+      console.log('Generated Token : ', token_a);
       setToken(token_a);
       return token_a;
     } catch (error) {
+      console.error('토큰 받기 실해 : ', error);
       throw new Error('토큰 받기 실패.');
     }
   };
