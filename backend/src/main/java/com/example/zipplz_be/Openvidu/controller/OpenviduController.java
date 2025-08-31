@@ -198,6 +198,7 @@ public class OpenviduController {
 
         try {
             Session session = openvidu.getActiveSession((String) params.get("sessionId"));
+            System.out.println("Session ID: " + params.get("sessionId")); // 세션 ID 출력 추가
 
             if (session == null) {
                 status = HttpStatus.NOT_FOUND;
