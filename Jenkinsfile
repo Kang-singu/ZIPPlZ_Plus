@@ -7,6 +7,7 @@ pipeline {
         OPENVIDU_SERVER_URL = credentials('OPENVIDU_SERVER_URL');
         OPENVIDU_SECRET = credentials('OPENVIDU_SECRET');
         DOMAIN_OR_PUBLIC_IP = credentials('DOMAIN_OR_PUBLIC_IP');
+        CERTIFICATE_TYPE = credentials('CERTIFICATE_TYPE');
         spring_h2_console_path = credentials('spring.h2.console.path');
         spring_datasource_username = credentials('spring.datasource.username');
         spring_datasource_password = credentials('spring.datasource.password');
