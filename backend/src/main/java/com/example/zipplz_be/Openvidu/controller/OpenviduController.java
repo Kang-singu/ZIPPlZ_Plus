@@ -215,13 +215,16 @@ public class OpenviduController {
                     Connection connection = session.createConnection(properties);
 
                     String token = connection.getToken();
+                    if (token.contains("token=")) {
+                        token = token.split("token=")[1].split("&")[0]; // URL에서 토큰만 추출
+                    }
                     System.out.println("######Generated Token : "+token);
 
                     //토큰 암호화 필요?
-                    openviduService.createConnection(connection.getToken(), userSerial, (Integer) params.get("chatroomSerial"));
+                    openviduService.createConnection(token, userSerial, (Integer) params.get("chatroomSerial"));
 
                     status = HttpStatus.OK;
-                    responseDTO = new ResponseDTO<>(status.value(), "응답 성공", connection.getToken());
+                    responseDTO = new ResponseDTO<>(status.value(), "응답 성공", token);
                 }
                 else {
                     status = HttpStatus.BAD_REQUEST;
