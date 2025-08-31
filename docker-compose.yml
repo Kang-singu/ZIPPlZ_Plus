@@ -72,7 +72,7 @@ services:
     volumes:
       # - /opt/openvidu/owncert/cert.pem:/opt/openvidu/owncert/certificate.cert
       # - /opt/openvidu/owncert/key.pem:/opt/openvidu/owncert/certificate.key
-      - /opt/openvidu/owncert/keystore.p12:/opt/openvidu/owncert/keystore.p12
+      # - /opt/openvidu/owncert/keystore.p12:/opt/openvidu/owncert/keystore.p12
       - /opt/openvidu/.env:/opt/openvidu/.env
     networks:
       - spring-cloud-network
