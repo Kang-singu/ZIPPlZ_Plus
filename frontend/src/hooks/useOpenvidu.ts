@@ -143,6 +143,16 @@ export default function useOpenVidu() {
         sessionId: sessionIds,
         chatroomSerial: Number(chatroomSerial),
       });
+
+      console.log('Sending request to create token:', {
+      url: `${base_url}openvidu/api/sessions/connections`,
+      data: JSON.parse(data), // 요청 데이터 로깅
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      });
+      
       const response = await axios.post(
         `${base_url}openvidu/api/sessions/connections`,
         data,
@@ -153,9 +163,14 @@ export default function useOpenVidu() {
           },
         }
       );
+
+      console.log('Server response:', response.data); // 서버 응답 전체 로깅
+      console.log('Received token:', response.data.data); // 반환된 토큰 로깅
+      
       if (response.data.proc.code === 200) {
         return response.data.data;
       } else {
+        console.error('Server error response:', response.data.proc);
         throw new Error(response.data.proc.message);
       }
     } catch (error) {
